@@ -1,0 +1,22 @@
+
+<div class="form-group {{field.divClass}} {{validator.divClass}}">
+    <label ab-show="field.label" for="{{field.name}}"
+            class="{{field.labelClass}}">
+        {{field.label}}
+    </label>
+    <div class="{{field.fieldClass}}">
+        <select ab-elem="field(field)"
+                id="{{field.name}}" name="{{field.name}}"
+                class="form-control">
+            <option ab-repeat="field.options:option"
+                    value="{{option.value}}">
+                {{option.title}}
+            </option>
+        </select>
+        <p ab-show="validator.hasErrors"
+            ab-repeat="validator.errors:error_message"
+            class="error">
+            {{error_message}}
+        </p>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+
+<div class="form-group {{field.divClass}} {{validator.divClass}}">
+    <label ab-show="field.label" for="{{field.name}}"
+            class="{{field.labelClass}}">
+        {{field.label}}
+    </label>
+    <div class="textField {{field.fieldClass}}">
+        <p>
+            <span ab-elem="field(field)">
+            </span>
+        </p>
+        <p ab-show="validator.hasErrors"
+            ab-repeat="validator.errors:error_message"
+            class="error">
+            {{error_message}}
+        </p>
+    </div>
+</div>

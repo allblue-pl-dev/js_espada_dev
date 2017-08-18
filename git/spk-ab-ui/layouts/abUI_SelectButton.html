@@ -1,0 +1,11 @@
+
+<div class="btn-group btn-group-justified" role="group">
+    <div ab-repeat="options:option" class="btn-group" role="group">
+        <button ab-elem="button(option)"
+                class="btn lb-btn-tab lb-btn-tab-danger {{option.class}} {{option.selectedClass}}"
+                type="button">
+                {{option.text}}
+        </button>
+    </div>
+</div>
+<div ab-show="error_Show" class="text-danger">{{error}}</div>

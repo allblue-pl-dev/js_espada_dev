@@ -1,0 +1,93 @@
+
+<div ab-holder="top"></div>
+<div ab-holder="top2"></div>
+
+<h3 ab-show="title">{{title}}</h3>
+
+<hr />
+<div ab-show="table.showSearch" class="search">
+    <form class="form-inline">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-search"></i>
+                </div>
+                <input ab-elem="filter"
+                        placeholder="{{eText('SPKTables:search_Placeholder')}}"
+                        type="text" class="form-control" />
+            </div>
+        </div>
+    </form>
+</div>
+<div ab-hide="table.showSearch">
+    <span>&nbsp;</span><!-- Needed for some reason. Bug? -->
+</div>
+
+<div ab-holder="beforeTable"></div>
+
+<div class="table_empty" ab-show="table.isEmpty">
+    {{eText('SPKTables:tableEmpty')}}
+</div>
+<div ab-hide="table.isEmpty"
+        class="table-responsive browse_table">
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr class="header">
+                <th ab-show="table.selectable"></th>
+                <th ab-show="table.image"></th>
+                <th ab-repeat="table.headers:header"
+                        ab-show="fns.isColumnVisible(header)"
+                        class="text-nowrap">
+                    <a ab-elem="header(header)"
+                            ab-field="header"
+                            href="">
+                    </a>&nbsp;
+                    <i ab-show="fns.showCaret_Down(header)"
+                        class="fa fa-caret-down"></i>
+                    <i ab-show="fns.showCaret_Up(header)"
+                        class="fa fa-caret-up"></i>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ab-repeat="table.rows:row" ab-elem="rows(row)"
+                    class="{{table.trClass}} {{row.class}}">
+                <td ab-show="table.selectable"
+                        ab-elem="selectTd(row)">
+                    <input ab-elem="select(row)" type="checkbox" />
+                </td>
+                <td ab-show="table.image">
+                    <a ab-show="row.href" href="#">
+                        <img src="{{table.image}}" alt="row.0" />
+                    </a>
+                    <div ab-hide="row.href" >
+                        <img src="{{table.image}}" alt="row.0" />
+                    </div>
+                </td>
+                <td ab-repeat="row.cols:col"
+                        ab-show="fns.isColumnVisible(col)">
+                    <a ab-show="row.href" href="#">
+                        <span ab-show="col.html" ab-field="col.html"></span>
+                        <span ab-hide="col.html" ab-field="col.value"></span>
+                    </a>
+                    <div ab-hide="row.href">
+                        <span ab-show="col.html" ab-field="col.html"></span>
+                        <span ab-hide="col.html" ab-field="col.value"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr ab-show="table.showLoadMore" class="e-load-more">
+                <td ab-elem="loadMore" colspan="{{table.colsLength}}"
+                        class="clickable" style="text-align: center;">
+                    <a href="#" style="font-size: 18pt; padding-top: 20px;">
+                        {{eText('SPKTables:loadMore')}}
+                        &nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="mg-clear"></div>
+
+<div ab-holder="bottom"></div>

@@ -1,0 +1,81 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <script type="text/javascript" src="../js/ab-code.js"></script>
+    <script type="text/javascript" src="../js/ab-code_editor.js"></script>
+    <script type="text/javascript" src="../js/ab-code_parser.js"></script>
+
+    <script type="text/javascript" src="../js/ab-code_basic.js"></script>
+</head>
+<body>
+<div id="preview"></div>
+<br /><br />
+<textarea id="editor">
+
+Paragrafy w edytorze są tworzone automatycznie. Wystarczy, że zaczniemy tekst od nowej linijki.
+To będzie już kolejny paragraf.
+
+Żeby było czytelniej możemy zostawić pustą linię i dalej będzie dobrze.
+
+Podstawowe tagi to [b]pogrubienie[/b], [i]kursywa[/i], [u]podkreślenie[/u], [o]przekreślenie[/o]
+
+Możemy też wykorzystać znacznik `span` do lepszej kontroli nad tekstem:
+[span b i u color=red size=30]bold, italic, underline, red, 30[/span]
+
+Czasami fajnie wstawić do tekstu ikonkę z [url href=""]fonts-awesome[/url]:
+[fa]fa-pawn[/fa][fa]fa-truck[/fa][fa]fa-thumbs-up[/fa][fa]fa-printer[/fa]
+
+Jak widać powyżej link można wstawić z alternatywnym tekstem lub bez [url]https://surf.allblue.pl[/url]
+
+No i cała GetUris_Gallery_Customa nagłówków:
+[h1]Nagłówek 1[/h1]
+[h2]Nagłówek 2[/h2]
+[h3]Nagłówek 3[/h3]
+[h4]Nagłówek 4[/h4]
+[h5]Nagłówek 5[/h5]
+
+Jeśli chcemy wstawić czysty html wystarczy go ubrać w tag:
+[html]
+<iframe src="https://embed.windyty.com/?53.697,17.161,6" width="300" height="300" frameborder="0"></iframe>
+[/html]
+
+Zwykła lista:
+[list]
+Pozycja pierwsza
+Pozycja druga
+Pozycja 3
+[/list]
+
+Lista numerowana:
+[list ordered]
+Pozycja pierwsza
+Pozycja druga
+Pozycja 3
+[/list]
+
+Zdjęcie domyślnie rozciąga się na całą stronę.
+[img]https://surf.allblue.pl/templates/esurfallblue/images/header_background.jpg[/img]
+
+[img]https://surf.allblue.pl/templates/esurfallblue/images/header_background.jpg[/img] Jeśli wstawimy je do tekstu, to miniaturka będzie dociągnięta do lewej.
+
+[img right]https://surf.allblue.pl/templates/esurfallblue/images/header_background.jpg[/img] Ale jeśli dodamy atrybut `right` to może być i do prawej...
+
+W tabelca każda linijka, to nowy wiersz, kolumny oddzielamy znacznikami `td`:
+[table]
+[th]Kolumna 1[/th] [th]Kolumna 2[/th] [th]Kolumna 3[/th]
+[td]A[/td] [td]B[/td] [td]C[/td]
+[td]A[/td] [td]B[/td] [td]C[/td]
+[/table]
+</textarea>
+
+<script type="text/javascript">
+    var ab_code = new ABCode.Class(document.getElementById('editor'));
+
+    abCode_Basic(ab_code);
+
+    var preview = document.getElementById('preview');
+    preview.innerHTML = ab_code.getHtml();
+</script>
+</body>
+</html>
