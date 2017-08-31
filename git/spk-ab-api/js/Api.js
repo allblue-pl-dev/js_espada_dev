@@ -74,6 +74,9 @@ $: {
                         'Cannot parse json data from: ' + uri);
                 result.data.data = data_string;
 
+                if (SPK.Debug)
+                    console.error(data_string);
+
                 return result;
             }
 
