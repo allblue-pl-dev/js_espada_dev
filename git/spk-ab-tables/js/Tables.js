@@ -70,6 +70,19 @@ function(notifications, table_info) {
     columnNames: null,
     columnIndexes: null,
 
+    replace_Chars: {
+        'ą': 'a',
+        'ć': 'c',
+        'ę': 'e',
+        'ł': 'l',
+        'ń': 'n',
+        'ó': 'o',
+        'ś': 's',
+        'ź': 'z',
+        'ż': 'z',
+    },
+    replace_String: 'ąćęłńóśźż',
+
     createElems: function()
     {
         var elems = this.$elems;
@@ -434,15 +447,17 @@ function(notifications, table_info) {
         if (this.filter.value === '')
             return rows;
 
-        var regexp = new RegExp('.*' +
-                this.filter.value.toLowerCase() + '.*');
+        var filter_string = this.rows_Filter_FormatString(this.filter.value);
+
+        var regexp = new RegExp('.*' + filter_string + '.*');
 
         var f_rows = [];
         for (var i = 0; i < rows.length; i++) {
             for (var j = 0; j < rows[i].cols.length; j++) {
-                var col = rows[i].cols[j].value;
+                var col_string = this.rows_Filter_FormatString(
+                        String(rows[i].cols[j].value));
 
-                if (String(col).toLowerCase().match(regexp)) {
+                if (col_string.match(regexp)) {
                     f_rows.push(rows[i]);
                     break;
                 }
@@ -450,6 +465,16 @@ function(notifications, table_info) {
         }
 
         return f_rows;
+    },
+
+    rows_Filter_FormatString(str)
+    { var self = this;
+        return str
+            .toLowerCase()
+            .replace(new RegExp('[' + this.replace_String + ']', 'g'),
+                    function(c) {
+                return self.replace_Chars[c];
+            });
     },
 
     rows_Sort: function(rows)

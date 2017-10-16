@@ -1,7 +1,8 @@
 'use strict';
 
+SPK.
 
-SPK.Module('abForms_Form', [], [
+Module('abForms_Form', [], [
 function(form_layout) {
     this.$layout = form_layout;
     this.formFields = {};

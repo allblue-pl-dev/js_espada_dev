@@ -9,7 +9,7 @@ var Module = {
         if (Helper.IsArray(layout_names)) {
             var t_layout_names = {};
             for (var i = 0; i < layout_names.length; i++)
-                t_layout_names[layout_names[i]] = layout_names[i];
+                t_layout_names[layout_names[i].replace(/{{name}}/g, module_name)] = layout_names[i];
             layout_names = t_layout_names;
         }
 
