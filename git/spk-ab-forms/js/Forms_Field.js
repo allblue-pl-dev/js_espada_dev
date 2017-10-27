@@ -252,6 +252,15 @@ Public: Object.create(null, {
             $(this._private.$elems.field).data('DateTimePicker').date(m);
         } else if (this._private.type === 'file') {
             /* Do nothing. */
+        } else if (this._private.type === 'radio') {
+            var options = this._private.$elems.htmlElems('field');
+
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].getAttribute('value') === value) {
+                    options[i].checked = true;
+                    return;
+                }
+            }
         } else if (this._private.type === 'input') {
             if (this._private.htmlElem.getAttribute('input-type') ===
                     'checkbox') {

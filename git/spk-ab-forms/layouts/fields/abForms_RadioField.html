@@ -7,10 +7,10 @@
         <div ab-repeat="field.options:option">
             <input
                 ab-elem="field(field)"
-                type="radio" id="{{option.id}}"
+                type="radio" id="{{field.name}}_{{option.value}}"
                 name="{{field.name}}" value="{{option.value}}" />
-            <label for="{{option.id}}">
-                &nbsp;{{option.text}}
+            <label for="{{field.name}}_{{option.value}}">
+                &nbsp;{{option.title}}
             </label>
         </div>
         <p ab-show="validator.hasErrors"
