@@ -17,7 +17,7 @@ var Elems = Object.create(null, {
         var elem_name = info[0];
 
         if (elem_name in this._elems) {
-            console.warn('Elem `%s` already created.');
+            console.warn('Elem `%s` already created.', elem_name);
             return;
         }
 

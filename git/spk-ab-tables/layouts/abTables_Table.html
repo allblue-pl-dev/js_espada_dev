@@ -64,15 +64,25 @@
                         <img src="{{table.image}}" alt="row.0" />
                     </div>
                 </td>
-                <td ab-repeat="row.cols:col"
-                        ab-show="fns.isColumnVisible(col)">
-                    <a ab-show="row.href" href="#">
-                        <span ab-show="col.html" ab-field="col.html"></span>
-                        <span ab-hide="col.html" ab-field="col.value"></span>
-                    </a>
-                    <div ab-hide="row.href">
-                        <span ab-show="col.html" ab-field="col.html"></span>
-                        <span ab-hide="col.html" ab-field="col.value"></span>
+                <td ab-repeat="row.cols:col" ab-show="fns.isColumnVisible(col)">
+                    <div ab-show="col.button">
+                        <div class="{{col.button.class}}">
+                            <a ab-elem="colButton(row, col)" href="#"
+                                class="btn {{col.button.btnClass}} mg-full">
+                                <i class="{{col.button.iClass}}"></i>
+                                {{col.button.text}}
+                            </a>
+                        </div>
+                    </div>
+                    <div ab-hide="col.button">
+                        <a ab-show="row.href" href="#">
+                            <span ab-show="col.html" ab-field="col.html"></span>
+                            <span ab-hide="col.html" ab-field="col.value"></span>
+                        </a>
+                        <div ab-hide="row.href">
+                            <span ab-show="col.html" ab-field="col.html"></span>
+                            <span ab-hide="col.html" ab-field="col.value"></span>
+                        </div>
                     </div>
                 </td>
             </tr>

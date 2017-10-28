@@ -66,6 +66,7 @@ function(notifications, table_info) {
     listeners_OnClick: null,
     listeners_OnFilter: null,
     listeners_OnRefresh: null,
+    listeners_OnColButtonClick: null,
 
     columnNames: null,
     columnIndexes: null,
@@ -91,6 +92,26 @@ function(notifications, table_info) {
         this.createElems_Filter(elems);
         this.createElems_LoadMore(elems);
         this.createElems_Select(elems);
+        this.createElems_ColButtons(elems);
+    },
+
+    createElems_ColButtons: function(elems)
+    { var self = this;
+        elems.onCreate('colButton', function(elem, row, col) {
+            elem.addEventListener('click', function(evt) {
+                evt.preventDefault();
+
+                if (self.listeners_OnColButtonClick === null)
+                    return;
+
+                var col_name = self.columnNames[col.index];
+                var col_values = [];
+                for (var i = 0; i < row.cols.length; i++)
+                    col_values.push(row.cols[i].value);
+
+                self.listeners_OnColButtonClick(col_values, col_name);
+            });
+        });
     },
 
     createElems_Filter: function(elems)
@@ -760,6 +781,12 @@ function(notifications, table_info) {
                 });
             }
 
+            return this;
+        }},
+
+        onColButtonClick: { value:
+        function(fn) {
+            this._table.listeners_OnColButtonClick = fn;
             return this;
         }},
 
