@@ -192,6 +192,11 @@ Public: Object.create(null, {
         return this._private.$elems.field;
     }},
 
+    elems: {
+    get: function() {
+        return this._private.$elems;
+    }},
+
     $fields: {
     get: function() {
         return this._private.$layout.$fields;
