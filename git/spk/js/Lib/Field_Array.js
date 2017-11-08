@@ -99,7 +99,7 @@ var Field_Array = Object.create(null, {
 
     toString: { value:
     function() {
-        return '[Hello?]';
+        return '[ Array ]';
     }},
 
     value: {
