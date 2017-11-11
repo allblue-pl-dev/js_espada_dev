@@ -100,6 +100,7 @@ function(notifications, table_info) {
         elems.onCreate('colButton', function(elem, row, col) {
             elem.addEventListener('click', function(evt) {
                 evt.preventDefault();
+                evt.stopPropagation();
 
                 if (self.listeners_OnColButtonClick === null)
                     return;
