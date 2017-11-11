@@ -555,7 +555,7 @@ function(notifications, table_info) {
                 return 0;
 
             if (reverse)
-                return a_value ? -1 : 1;
+                return a_value ? 1 : -1;
             else
                 return a_value ? -1 : 1;
         }
