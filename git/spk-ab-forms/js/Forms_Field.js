@@ -297,6 +297,9 @@ Public: Object.create(null, {
 
     setDisabled: { value:
     function(disabled) {
+        if (this._private.$elems.field === null)
+            return;
+
         if (disabled)
             this._private.$elems.field.setAttribute('disabled', '');
         else
