@@ -489,7 +489,7 @@ function(notifications, table_info) {
         return f_rows;
     },
 
-    rows_Filter_FormatString(str)
+    rows_Filter_FormatString: function(str)
     { var self = this;
         return str
             .toLowerCase()
