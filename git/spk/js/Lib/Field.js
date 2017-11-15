@@ -328,9 +328,7 @@ var Field = {
                         self._type = Field.TYPE_ARRAY;
                     }
                 }
-            }
-
-            if (is_array) {
+            } else if (self._type === Field.TYPE_ARRAY) {
                 var length = self._public.length;
                 for (var i = 0; i < length - Object.keys(value).length; i++)
                     self._public.pop();
