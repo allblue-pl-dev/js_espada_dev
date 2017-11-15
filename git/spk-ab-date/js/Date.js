@@ -10,10 +10,13 @@ $: {
     span_Day: 24 * 60 * 60,
 
 
-    date_Format: function(time)
+    date_Format: function(time, format)
     {
+        format = typeof format === 'undefined' ?
+                SPK.$eText.get('SPK:date_Format') : format;
+
         return moment.utc(time * 1000).utcOffset(this.utcOffset)
-                .format(SPK.$eText.get('SPK:date_Format'));
+                .format(format);
     },
 
     date_StrToTime: function(str)
