@@ -328,7 +328,7 @@ var Field = {
                         self._type = Field.TYPE_ARRAY;
                     }
                 }
-            } else if (self._type === Field.TYPE_ARRAY) {
+            } else if (is_array) {
                 var length = self._public.length;
                 for (var i = 0; i < length - Object.keys(value).length; i++)
                     self._public.pop();
@@ -361,6 +361,9 @@ var Field = {
 
             self._value = value;
         }
+
+        // if (self._type === Field.TYPE_ARRAY)
+        //     console.log('HERE', value);
 
         if (update)
             self.update(self._fullName);

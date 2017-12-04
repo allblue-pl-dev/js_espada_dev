@@ -603,20 +603,20 @@ function(notifications, table_info) {
         });
     },
 
-    updateRows: function(rows)
-    {
-        this.fTable.rows.set(rows);
-        this.fTable.set({
-
-        })
-
-        if (this.fTable.rows.length >=  this.limit.current)
-            return;
-
-        var new_rows_start = this.fTable.length;
-        this.fTable.rows.push_Array(this.rows.slice(new_rows_start,
-                self.limit.current));
-    },
+    // updateRows: function(rows)
+    // {
+    //     this.fTable.rows.set(rows);
+    //     this.fTable.set({
+    //
+    //     })
+    //
+    //     if (this.fTable.rows.length >=  this.limit.current)
+    //         return;
+    //
+    //     var new_rows_start = this.fTable.length;
+    //     this.fTable.rows.push_Array(this.rows.slice(new_rows_start,
+    //             self.limit.current));
+    // },
 
     Public: Object.create(null, {
 
