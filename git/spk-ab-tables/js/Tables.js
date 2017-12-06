@@ -587,7 +587,7 @@ function(notifications, table_info) {
         });
 
         this.fTable.colsLength = t_rows.length  === 0 ?
-                0 : t_rows[0].cols.length;
+                0 : (t_rows[0].cols.length + (this.fTable.selectable ? 1 : 0));
     },
 
     setupFields: function()
@@ -709,8 +709,10 @@ function(notifications, table_info) {
 
         setSelectable: { value:
         function(selectable) {
-            if (selectable)
-                this._table.fTable.colsLength++;
+            if (selectable) {
+                if (!this._table.fTable.selectable)
+                    this._table.fTable.colsLength++;
+            }
 
             this._table.fTable.selectable = selectable;
             return this;
