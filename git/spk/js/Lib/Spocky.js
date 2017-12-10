@@ -232,11 +232,12 @@ Public: Object.create(null, {
 
     LogD: { value:
     function() {
-        var args = [ 'Debug:' ];
+        if (!Spocky._Debug)
+            return;
+
+        console.log('DEBUG', new Error());
         for (var i = 0; i < arguments.length; i++)
-            args.push(arguments[i]);
-        args.push(new Error());
-        console.log.apply(null, args);
+            console.log(i + 1, arguments[i]);
     }},
 
     Module: { value:
