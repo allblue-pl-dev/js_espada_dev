@@ -271,8 +271,8 @@ function(notifications, table_info) {
 
         var table_args = this.getTableArgs();
         if (this.dynamic) {
-            table_args.offset = update ? this.rows.length : 0;
-            table_args.limit = this.limit.current - (update ? this.rows.length : 0);
+            table_args.table.offset = update ? this.rows.length : 0;
+            table_args.table.limit = this.limit.current - (update ? this.rows.length : 0);
         }
 
         fields.tableArgs = table_args;
