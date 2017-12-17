@@ -79,12 +79,14 @@ var Field_Array = Object.create(null, {
 
     pushArray: { value:
     function(values) {
-        var start_i = Object.keys(this).length;
-        var t_values = {};
         for (var i = 0; i < values.length; i++)
-            t_values[start_i + i] = values[i];
-
-        this._field.set(t_values);
+            this.push(values[i]);
+        // var start_i = Object.keys(this).length;
+        // var t_values = {};
+        // for (var i = 0; i < values.length; i++)
+        //     t_values[start_i + i] = values[i];
+        //
+        // this._field.set(t_values);
     }},
 
     set: { value:
