@@ -47,7 +47,7 @@ function(notifications, table_info) {
     this.limit = {
         start: 50,
         current: 50,
-        step: 100
+        step: 100,
     };
 
     this.setupFields();
@@ -132,12 +132,12 @@ function(notifications, table_info) {
                 self.mNotifications.startLoading(
                         SPK.$eText.get('SPKTables:refreshTable_Loading'));
 
-                self.limit.current = self.limit.start;
-
                 if (self.filter.current === self.filter.value) {
                     self.mNotifications.finishLoading();
                     return;
                 }
+
+                self.limit.current = self.limit.start;
 
                 self.filter.current = self.filter.value;
                 if (self.dynamic)
@@ -197,7 +197,8 @@ function(notifications, table_info) {
             if (self.dynamic)
                 self.refresh(true);
             else {
-                var n_rows = self.rows.slice(
+                var t_rows = self.rows_Filter(self.rows);
+                var n_rows = t_rows.slice(
                         self.limit.current - self.limit.step,
                         self.limit.current);
                 self.rows_Append(n_rows);
