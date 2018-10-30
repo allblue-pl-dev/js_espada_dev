@@ -319,7 +319,7 @@ function(notifications, table_info) {
             apiUri: null,
             image: '',
             orderBy: [ null, false ],
-            hiddenColumns: []
+            hiddenColumns: [],
         };
 
         for (var prop_name in table_info) {
